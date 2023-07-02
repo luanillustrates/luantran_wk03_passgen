@@ -1,7 +1,15 @@
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  passwordText.value = password;
+}
 
 // variables for password criteria
 
@@ -52,23 +60,12 @@ function generatePassword() {
   }
 
   for (var i = 0; i < passLength; i++) {
-    password += pwCriteria[Math.floor(Math.random() * pwCriteria.length)];
+    password += pwCriteria[Math.floor(Math.random() * pwCriteria.length)]; 
   }
-  
-  console.log(password);  
 
+
+  return password;
 };
 
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  
 
-  passwordText.value = password;
-
-}
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);

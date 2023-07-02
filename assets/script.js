@@ -1,30 +1,41 @@
-// Assignment code here
+// variables for password criteria
 
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var numeric = '0123456789';
 var special = '!@#$%^&*()_+=-';
-var passwordLength = 0;
 
 passwordLower = lowercase.split('');
 passwordUpper = uppercase.split('');
 passwordNumeric = numeric.split('');
 passwordSpecial = special.split('');
 
-// passwordCriteria = [passwordLower, passwordUpper, passwordNumeric, passwordSpecial];
+// function to generate checklist for password
 
+function createPassword() {
 
+  var passLower = confirm("Would you like any lowercase letters?");
+  var passUpper = confirm("Would you like any uppercase letters?");
+  var passNumeric = confirm("Would you like any numbers?");
+  var passSpecial = confirm("Would you like any special characters?");
+  var passLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
+  
 
-generateBtn.addEventListener("click", writePassword);
+  if (passLength < 8 || passLength > 128) {
+    alert("Your password length does not match the required amount, please try again");
+    var passLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
+  } 
 
-function writePassword() {
-  var passwordLower = confirm("Would you like any lowercase letters?");
-  passwordUpper = confirm("Would you like any uppercase letters?");
-  passwordNumeric = confirm("Would you like any numbers?");
-  passwordSpecial = confirm("Would you like any special characters?");
-
-  var passwordLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
-}
+  else if (passLower === false && passUpper === false && passNumeric === false && passSpecial === false) {
+    alert("Please select from the password criteria");
+    var passLower = confirm("Would you like any lowercase letters?");
+    var passUpper = confirm("Would you like any uppercase letters?");
+    var passNumeric = confirm("Would you like any numbers?");
+    var passSpecial = confirm("Would you like any special characters?");
+    var passLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
+  }
+  
+};
 
 
 
@@ -40,5 +51,5 @@ function writePassword() {
 
 }
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", createPassword);

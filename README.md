@@ -6,7 +6,7 @@ A password generator that creates the password given the appropriate context cho
 
 ## Installation
 
-N/A
+[deployed](https://luanillustrates.github.io/luantran_wk03_passgen/)
 
 ## Usage
 

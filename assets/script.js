@@ -44,25 +44,29 @@ function generatePassword() {
   // allocating the selections to add to password
 
   if (passLower) {
-    pwCriteria += lowercase;
+    pwCriteria = pwCriteria.concat(lowercase);
+    
   }
 
   if (passUpper) {
-    pwCriteria += uppercase;
+    pwCriteria = pwCriteria.concat(uppercase);
   }
 
   if (passNumeric) {
-    pwCriteria += numeric;
+    pwCriteria = pwCriteria.concat(numeric);
   }
   
   if (passSpecial) {
-    pwCriteria += special;
+    pwCriteria = pwCriteria.concat(special);
   }
+  
+  var password = "";
 
   for (var i = 0; i < passLength; i++) {
-    password += pwCriteria[Math.floor(Math.random() * pwCriteria.length)]; 
-  }
+    password += pwCriteria[Math.floor(Math.random() * pwCriteria.length)];
 
+    console.log(password);
+  }
 
   return password;
 };

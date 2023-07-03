@@ -1,23 +1,9 @@
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-var passwordText = document.querySelector("#password");
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  passwordText.value = password;
-}
-
 // variables for password criteria
 
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var numeric = '0123456789';
 var special = '!@#$%^&*()_+=-';
-var password = "";
 var pwCriteria = "";
 
 
@@ -30,7 +16,7 @@ function generatePassword() {
   var passNumeric = confirm("Would you like any numbers?");
   var passSpecial = confirm("Would you like any special characters?");
   var passLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
-  
+  var password = [];
 
   if (passLength < 8 || passLength > 128) {
     alert("Your password length does not match the required amount, please try again");
@@ -45,7 +31,6 @@ function generatePassword() {
 
   if (passLower) {
     pwCriteria = pwCriteria.concat(lowercase);
-    
   }
 
   if (passUpper) {
@@ -59,17 +44,28 @@ function generatePassword() {
   if (passSpecial) {
     pwCriteria = pwCriteria.concat(special);
   }
-  
-  var password = "";
 
   for (var i = 0; i < passLength; i++) {
     password += pwCriteria[Math.floor(Math.random() * pwCriteria.length)];
-
-    console.log(password);
   }
 
+  // clears for next generate
+  pwCriteria = "";
+
   return password;
+  
 };
 
 
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  passwordText.value = password;
+}

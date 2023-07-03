@@ -12,7 +12,7 @@ N/A
 
 A page to generate randomised password from various criteria.
 
-![website's appearance and functionality preview](./screenshot.jpg)
+![website's appearance and functionality preview](./assets/screenshot.jpg)
 
 Clicking on generate password will prompt the user for a choice of lower or upper case letters, numeric and special characters.
 
